@@ -1,172 +1,185 @@
 {
-    "common": {
-        "name": "flow",
-        "version": "0.0.1",
-        "news": {
-            "0.0.1": {
-                "en": "Initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Первый выпуск",
-                "pt": "Lançamento inicial",
-                "nl": "Eerste release",
-                "fr": "Première version",
-                "it": "Rilascio iniziale",
-                "es": "Lanzamiento inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Перший випуск",
-                "zh-cn": "首次发布"
-            }
-        },
-        "titleLang": {
-            "en": "Flow",
-            "de": "Flow",
-            "ru": "Flow",
-            "pt": "Flow",
-            "nl": "Flow",
-            "fr": "Flow",
-            "it": "Flow",
-            "es": "Flow",
-            "pl": "Flow",
-            "uk": "Flow",
-            "zh-cn": "Flow"
-        },
-        "desc": {
-            "en": "Freely configurable, animated flow diagram for energy, water, gas and heat, for vis-2 and the device manager",
-            "de": "Frei konfigurierbares, animiertes Fluss-Diagramm für Energie, Wasser, Gas und Wärme, für vis-2 und den Geräte-Manager",
-            "ru": "Свободно настраиваемая анимированная диаграмма потоков энергии, воды, газа и тепла для vis-2 и менеджера устройств",
-            "pt": "Diagrama de fluxo animado e livremente configurável para energia, água, gás e calor, para vis-2 e o gestor de dispositivos",
-            "nl": "Vrij configureerbaar, geanimeerd stroomdiagram voor energie, water, gas en warmte, voor vis-2 en de apparaatbeheerder",
-            "fr": "Diagramme de flux animé et librement configurable pour l’énergie, l’eau, le gaz et la chaleur, pour vis-2 et le gestionnaire d’appareils",
-            "it": "Diagramma di flusso animato e liberamente configurabile per energia, acqua, gas e calore, per vis-2 e il gestore dispositivi",
-            "es": "Diagrama de flujo animado y configurable para energía, agua, gas y calor, para vis-2 y el gestor de dispositivos",
-            "pl": "Dowolnie konfigurowalny, animowany diagram przepływu energii, wody, gazu i ciepła dla vis-2 i menedżera urządzeń",
-            "uk": "Вільно налаштовувана анімована діаграма потоків енергії, води, газу та тепла для vis-2 та менеджера пристроїв",
-            "zh-cn": "适用于 vis-2 和设备管理器的可自由配置动画流图：电、水、燃气和热"
-        },
-        "licenseInformation": {
-            "license": "MIT",
-            "type": "free"
-        },
-        "authors": [
-            "bluefox <dogafox@gmail.com>"
-        ],
-        "keywords": [
-            "energy",
-            "water",
-            "flow",
-            "diagram",
-            "vis-2",
-            "widgets",
-            "devices"
-        ],
-        "platform": "Javascript/Node.js",
-        "icon": "flow.svg",
-        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.flow/main/admin/flow.svg",
-        "enabled": true,
-        "readme": "https://github.com/ioBroker/ioBroker.flow/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "none",
-        "adminUI": {
-            "config": "none",
-            "tab": "html"
-        },
-        "onlyWWW": true,
-        "type": "visualization-widgets",
-        "connectionType": "local",
-        "dataSource": "push",
-        "nogit": true,
-        "singleton": true,
-        "visWidgets": {
-            "flowWidgets": {
-                "i18n": "component",
-                "name": "flowWidgets",
-                "url": "flow/customWidgets.js",
-                "bundlerType": "module",
-                "components": [
-                    "Flow"
-                ]
-            }
-        },
-        "deviceWidgets": {
-            "url": "customDevices.js",
-            "components": [
-                {
-                    "name": "Flow",
-                    "label": {
-                        "en": "Flow diagram",
-                        "de": "Fluss-Diagramm",
-                        "ru": "Диаграмма потока",
-                        "pt": "Diagrama de fluxo",
-                        "nl": "Stroomdiagram",
-                        "fr": "Diagramme de flux",
-                        "it": "Diagramma di flusso",
-                        "es": "Diagrama de flujo",
-                        "pl": "Diagram przepływu",
-                        "uk": "Діаграма потоку",
-                        "zh-cn": "流图"
-                    },
-                    "description": {
-                        "en": "Animated flow diagram with its own designer: energy, water, gas or heat",
-                        "de": "Animiertes Fluss-Diagramm mit eigenem Designer: Energie, Wasser, Gas oder Wärme",
-                        "ru": "Анимированная диаграмма потоков с собственным редактором: энергия, вода, газ или тепло",
-                        "pt": "Diagrama de fluxo animado com o seu próprio editor: energia, água, gás ou calor",
-                        "nl": "Geanimeerd stroomdiagram met eigen ontwerper: energie, water, gas of warmte",
-                        "fr": "Diagramme de flux animé avec son propre éditeur : énergie, eau, gaz ou chaleur",
-                        "it": "Diagramma di flusso animato con il proprio editor: energia, acqua, gas o calore",
-                        "es": "Diagrama de flujo animado con su propio editor: energía, agua, gas o calor",
-                        "pl": "Animowany diagram przepływu z własnym edytorem: energia, woda, gaz lub ciepło",
-                        "uk": "Анімована діаграма потоків із власним редактором: енергія, вода, газ або тепло",
-                        "zh-cn": "带有自己设计器的动画流图：电、水、燃气或热"
-                    },
-                    "icon": "flow.svg"
-                }
-            ]
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=8.0.14"
-            }
-        ],
-        "restartAdapters": [
-            "vis-2"
-        ],
-        "tier": 3,
-        "adminTab": {
-            "singleton": true,
-            "name": {
-                "en": "Flow",
-                "de": "Fluss",
-                "ru": "Поток",
-                "pt": "Fluxo",
-                "nl": "Stroom",
-                "fr": "Flux",
-                "it": "Flusso",
-                "es": "Flujo",
-                "pl": "Przepływ",
-                "uk": "Потік",
-                "zh-cn": "流"
-            },
-            "icon": "flow.svg"
-        }
+  "common": {
+    "name": "flow",
+    "version": "0.0.2",
+    "news": {
+      "0.0.2": {
+        "en": "Corrections for publication",
+        "de": "Korrekturen zur Publikation",
+        "ru": "Исправления к публикации",
+        "pt": "Correções de publicação",
+        "nl": "Correcties voor publicatie",
+        "fr": "Corrections pour publication",
+        "it": "Correzioni per la pubblicazione",
+        "es": "Correcciones de publicación",
+        "pl": "Korekty do publikacji",
+        "uk": "Виправлення для публікації",
+        "zh-cn": "对出版物的更正"
+      },
+      "0.0.1": {
+        "en": "Initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Первый выпуск",
+        "pt": "Lançamento inicial",
+        "nl": "Eerste release",
+        "fr": "Première version",
+        "it": "Rilascio iniziale",
+        "es": "Lanzamiento inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Перший випуск",
+        "zh-cn": "首次发布"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": [
+    "titleLang": {
+      "en": "Flow",
+      "de": "Flow",
+      "ru": "Flow",
+      "pt": "Flow",
+      "nl": "Flow",
+      "fr": "Flow",
+      "it": "Flow",
+      "es": "Flow",
+      "pl": "Flow",
+      "uk": "Flow",
+      "zh-cn": "Flow"
+    },
+    "desc": {
+      "en": "Freely configurable, animated flow diagram for energy, water, gas and heat, for vis-2 and the device manager",
+      "de": "Frei konfigurierbares, animiertes Fluss-Diagramm für Energie, Wasser, Gas und Wärme, für vis-2 und den Geräte-Manager",
+      "ru": "Свободно настраиваемая анимированная диаграмма потоков энергии, воды, газа и тепла для vis-2 и менеджера устройств",
+      "pt": "Diagrama de fluxo animado e livremente configurável para energia, água, gás e calor, para vis-2 e o gestor de dispositivos",
+      "nl": "Vrij configureerbaar, geanimeerd stroomdiagram voor energie, water, gas en warmte, voor vis-2 en de apparaatbeheerder",
+      "fr": "Diagramme de flux animé et librement configurable pour l’énergie, l’eau, le gaz et la chaleur, pour vis-2 et le gestionnaire d’appareils",
+      "it": "Diagramma di flusso animato e liberamente configurabile per energia, acqua, gas e calore, per vis-2 e il gestore dispositivi",
+      "es": "Diagrama de flujo animado y configurable para energía, agua, gas y calor, para vis-2 y el gestor de dispositivos",
+      "pl": "Dowolnie konfigurowalny, animowany diagram przepływu energii, wody, gazu i ciepła dla vis-2 i menedżera urządzeń",
+      "uk": "Вільно налаштовувана анімована діаграма потоків енергії, води, газу та тепла для vis-2 та менеджера пристроїв",
+      "zh-cn": "适用于 vis-2 和设备管理器的可自由配置动画流图：电、水、燃气和热"
+    },
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
+    "authors": [
+      "bluefox <dogafox@gmail.com>"
+    ],
+    "keywords": [
+      "energy",
+      "water",
+      "flow",
+      "diagram",
+      "vis-2",
+      "widgets",
+      "devices"
+    ],
+    "platform": "Javascript/Node.js",
+    "icon": "flow.svg",
+    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.flow/main/admin/flow.svg",
+    "enabled": true,
+    "readme": "https://github.com/ioBroker/ioBroker.flow/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "none",
+    "adminUI": {
+      "config": "none",
+      "tab": "html"
+    },
+    "onlyWWW": true,
+    "type": "visualization-widgets",
+    "connectionType": "local",
+    "dataSource": "push",
+    "nogit": true,
+    "singleton": true,
+    "visWidgets": {
+      "flowWidgets": {
+        "i18n": "component",
+        "name": "flowWidgets",
+        "url": "flow/customWidgets.js",
+        "bundlerType": "module",
+        "components": [
+          "Flow"
+        ]
+      }
+    },
+    "deviceWidgets": {
+      "url": "customDevices.js",
+      "components": [
         {
-            "_id": "diagrams",
-            "type": "folder",
-            "common": {
-                "name": {
-                    "en": "Stored diagrams",
-                    "de": "Gespeicherte Diagramme"
-                }
-            },
-            "native": {}
+          "name": "Flow",
+          "label": {
+            "en": "Flow diagram",
+            "de": "Fluss-Diagramm",
+            "ru": "Диаграмма потока",
+            "pt": "Diagrama de fluxo",
+            "nl": "Stroomdiagram",
+            "fr": "Diagramme de flux",
+            "it": "Diagramma di flusso",
+            "es": "Diagrama de flujo",
+            "pl": "Diagram przepływu",
+            "uk": "Діаграма потоку",
+            "zh-cn": "流图"
+          },
+          "description": {
+            "en": "Animated flow diagram with its own designer: energy, water, gas or heat",
+            "de": "Animiertes Fluss-Diagramm mit eigenem Designer: Energie, Wasser, Gas oder Wärme",
+            "ru": "Анимированная диаграмма потоков с собственным редактором: энергия, вода, газ или тепло",
+            "pt": "Diagrama de fluxo animado com o seu próprio editor: energia, água, gás ou calor",
+            "nl": "Geanimeerd stroomdiagram met eigen ontwerper: energie, water, gas of warmte",
+            "fr": "Diagramme de flux animé avec son propre éditeur : énergie, eau, gaz ou chaleur",
+            "it": "Diagramma di flusso animato con il proprio editor: energia, acqua, gas o calore",
+            "es": "Diagrama de flujo animado con su propio editor: energía, agua, gas o calor",
+            "pl": "Animowany diagram przepływu z własnym edytorem: energia, woda, gaz lub ciepło",
+            "uk": "Анімована діаграма потоків із власним редактором: енергія, вода, газ або тепло",
+            "zh-cn": "带有自己设计器的动画流图：电、水、燃气或热"
+          },
+          "icon": "flow.svg"
         }
-    ]
+      ]
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=8.0.14"
+      }
+    ],
+    "restartAdapters": [
+      "vis-2"
+    ],
+    "tier": 3,
+    "adminTab": {
+      "singleton": true,
+      "name": {
+        "en": "Flow",
+        "de": "Fluss",
+        "ru": "Поток",
+        "pt": "Fluxo",
+        "nl": "Stroom",
+        "fr": "Flux",
+        "it": "Flusso",
+        "es": "Flujo",
+        "pl": "Przepływ",
+        "uk": "Потік",
+        "zh-cn": "流"
+      },
+      "icon": "flow.svg"
+    }
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "diagrams",
+      "type": "folder",
+      "common": {
+        "name": {
+          "en": "Stored diagrams",
+          "de": "Gespeicherte Diagramme"
+        }
+      },
+      "native": {}
+    }
+  ]
 }
