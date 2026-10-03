@@ -920,14 +920,12 @@ describe('templates', () => {
 
     it('offers a palette that fits what flows', () => {
         const words = {
-            en: JSON.parse(readFileSync(new URL('../packages/i18n/src/en.json', import.meta.url), 'utf8')) as Record<
-                string,
-                string
-            >,
-            de: JSON.parse(readFileSync(new URL('../packages/i18n/src/de.json', import.meta.url), 'utf8')) as Record<
-                string,
-                string
-            >,
+            en: JSON.parse(
+                readFileSync(new URL('../packages/translations/src/en.json', import.meta.url), 'utf8'),
+            ) as Record<string, string>,
+            de: JSON.parse(
+                readFileSync(new URL('../packages/translations/src/de.json', import.meta.url), 'utf8'),
+            ) as Record<string, string>,
         };
         for (const medium of MEDIUM_IDS) {
             const entries = paletteOf(medium);
@@ -1260,8 +1258,8 @@ describe('import from energiefluss-erweitert', () => {
 
     it('has a sentence in the dictionary for every kind of warning', () => {
         const dictionaries = {
-            en: JSON.parse(readFileSync(new URL('../packages/i18n/src/en.json', import.meta.url), 'utf8')),
-            de: JSON.parse(readFileSync(new URL('../packages/i18n/src/de.json', import.meta.url), 'utf8')),
+            en: JSON.parse(readFileSync(new URL('../packages/translations/src/en.json', import.meta.url), 'utf8')),
+            de: JSON.parse(readFileSync(new URL('../packages/translations/src/de.json', import.meta.url), 'utf8')),
         } as Record<string, Record<string, string>>;
         // The codes are a type, so they are read from the source: a new code without a sentence
         // would otherwise show up in the designer as its bare dictionary key
@@ -2230,14 +2228,12 @@ describe('fill levels', () => {
 
     it('gives every icon a name in both dictionaries', () => {
         const words = {
-            en: JSON.parse(readFileSync(new URL('../packages/i18n/src/en.json', import.meta.url), 'utf8')) as Record<
-                string,
-                string
-            >,
-            de: JSON.parse(readFileSync(new URL('../packages/i18n/src/de.json', import.meta.url), 'utf8')) as Record<
-                string,
-                string
-            >,
+            en: JSON.parse(
+                readFileSync(new URL('../packages/translations/src/en.json', import.meta.url), 'utf8'),
+            ) as Record<string, string>,
+            de: JSON.parse(
+                readFileSync(new URL('../packages/translations/src/de.json', import.meta.url), 'utf8'),
+            ) as Record<string, string>,
         };
         for (const [name, icon] of Object.entries(BUILTIN_ICONS)) {
             for (const [lang, dictionary] of Object.entries(words)) {

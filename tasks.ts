@@ -99,7 +99,7 @@ function copyVis(): void {
     // The standalone dictionary next to the widgets. vis-2 loads the translations through the
     // federated `./translations` module, but the files are small and having them as plain JSON is what
     // lets `translate-adapter` and a human reviewer see what the set actually ships.
-    copyFiles(['packages/i18n/src/*.json'], `${VIS_DEST}i18n`);
+    copyFiles(['packages/translations/src/*.json'], `${VIS_DEST}i18n`);
 }
 
 function copyDm(): void {

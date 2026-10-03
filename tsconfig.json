@@ -21,7 +21,7 @@
             "@flow/core/*": ["./packages/core/src/*"],
             "@flow/editor": ["./packages/editor/src/index.ts"],
             "@flow/editor/*": ["./packages/editor/src/*"],
-            "@flow/i18n": ["./packages/i18n/src/index.ts"]
+            "@flow/i18n": ["./packages/translations/src/index.ts"]
         }
     },
     "include": ["packages/*/src/**/*", "tasks.ts", "tools/**/*", "test/**/*", "*.mjs"],

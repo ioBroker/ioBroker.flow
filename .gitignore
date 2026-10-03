@@ -10,3 +10,6 @@ src-dm-widgets/build/
 *.log
 .DS_Store
 *.tgz
+
+# Written by @alcalzone/release-script
+.commitinfo

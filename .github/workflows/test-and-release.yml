@@ -1,0 +1,92 @@
+# This is a composition of lint and test scripts
+# Make sure to update this file along with the others
+
+name: Test and Release
+
+# Run this job on all pushes and pull requests
+# as well as tags with a semantic version
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      # normal versions
+      - 'v?[0-9]+.[0-9]+.[0-9]+'
+      # pre-releases
+      - 'v?[0-9]+.[0-9]+.[0-9]+-**'
+  pull_request: {}
+
+# Cancel previous PR/branch runs when a new commit is pushed
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Performs quick checks before the expensive test runs
+  check-and-lint:
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # This is one npm workspace, so a single `npm ci` at the root installs all four
+      # bundles and hoists the shared copies of react, MUI and @iobroker/gui-components
+      - uses: ioBroker/testing-action-check@v2
+        with:
+          node-version: '24.x'
+          install-command: 'npm ci'
+          type-checking: true
+          lint: true
+          test-command: 'npm run test:package'
+
+  # Runs adapter tests on all supported node versions
+  adapter-tests:
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+
+    needs: [check-and-lint]
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x, 24.x, 26.x]
+
+    steps:
+      # `build: true` is the point of this job: the adapter ships no Node.js code, so what has
+      # to hold on every node version is the install and the three Vite builds. The unit tests
+      # (`npm run test:unit`) are picked up automatically by the action.
+      - uses: ioBroker/testing-action-adapter@v1
+        with:
+          build: true
+          install-command: 'npm ci'
+          os: 'ubuntu-latest'
+          node-version: ${{ matrix.node-version }}
+          # `onlyWWW` with `mode: none` -- there is no adapter process to start, so there is
+          # nothing for an integration test to talk to. The widgets are tested in the browser.
+          integration-test-command: 'echo "onlyWWW adapter (mode: none) -- no runtime to integration-test, skipping"'
+
+  # Deploys the final package to NPM
+  deploy:
+    needs: [check-and-lint, adapter-tests]
+
+    # Permissions are required to create GitHub releases and npm trusted publishing
+    permissions:
+      contents: write
+      id-token: write
+
+    # Trigger this step only when a commit on any branch is tagged with a version number
+    if: |
+      contains(github.event.head_commit.message, '[skip ci]') == false &&
+      github.event_name == 'push' &&
+      startsWith(github.ref, 'refs/tags/v')
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # No `npm-token`: the package is published through npm trusted publishing, which is what
+      # signs the release with provenance
+      - uses: ioBroker/testing-action-deploy@v1
+        with:
+          install-command: 'npm ci'
+          node-version: '24.x'
+          build: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}

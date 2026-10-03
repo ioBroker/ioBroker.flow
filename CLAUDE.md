@@ -21,7 +21,7 @@ source packages that are compiled into both bundles:
 |---|---|---|
 | `packages/core` | model, value resolution, geometry, runtime, SVG renderer | **No MUI, no socket, no icon package.** Only React. |
 | `packages/editor` | the designer dialog | MUI + `@iobroker/gui-components`; host-agnostic via `EditorContext` |
-| `packages/i18n` | the dictionary | used by both bundles |
+| `packages/translations` | the dictionary | used by both bundles |
 
 They are consumed through the aliases `@flow/core`, `@flow/editor`, `@flow/i18n`,
 declared in each `vite.config.ts` (`resolve.alias`) and each `tsconfig.json` (`paths`). They are *not*

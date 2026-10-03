@@ -124,8 +124,9 @@ that move faster the more power there is.
 
 ## Install
 
+From the ioBroker admin, or on the command line:
+
 ```bash
-# from the ioBroker admin, or:
 iobroker add flow
 ```
 
@@ -248,14 +249,14 @@ What is missing so far: reading history, so there is no min/max over the last da
 This is one npm workspace with three bundles, a development preview and three shared source packages.
 
 ```
-packages/core/       model, value resolution, geometry, SVG renderer — no MUI, no socket
-packages/editor/     the designer (MUI + @iobroker/gui-components)
-packages/i18n/       the dictionary, used by both bundles
-examples/            complete diagrams to import; `npm test` checks they stay valid
-src-widgets/         the vis-2 widget set   -> widgets/flow/
-src-dm-widgets/      the devices plugin     -> admin/dm-widgets/
-src-admin/           the admin tab          -> admin/tab.html + admin/tab-assets/
-src-preview/         dev server only: the admin-side GUI with hot reload, never built or shipped
+packages/core/          model, value resolution, geometry, SVG renderer — no MUI, no socket
+packages/editor/        the designer (MUI + @iobroker/gui-components)
+packages/translations/  the dictionary, used by both bundles
+examples/               complete diagrams to import; `npm test` checks they stay valid
+src-widgets/            the vis-2 widget set   -> widgets/flow/
+src-dm-widgets/         the devices plugin     -> admin/dm-widgets/
+src-admin/              the admin tab          -> admin/tab.html + admin/tab-assets/
+src-preview/            dev server only: the admin-side GUI with hot reload, never built or shipped
 ```
 
 ```bash
@@ -292,16 +293,16 @@ web adapter on 8082); it needs a running vis-2 to show anything.
 
 ### Translations
 
-`packages/i18n/src/*.json` — `en` and `de` are complete, the other nine languages are empty on purpose:
-`I18n.t` falls back to English for a missing key, and an empty file says "not translated yet" where a
-copy of the English would claim otherwise. Contributions welcome.
+`packages/translations/src/*.json` — `en` and `de` are complete, the other nine languages are
+empty on purpose: `I18n.t` falls back to English for a missing key, and an empty file says "not
+translated yet" where a copy of the English would claim otherwise. Contributions welcome.
 
 ## Changelog
 <!--
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.0.1 (2026-09-25)
 
 * (bluefox) Initial release
 

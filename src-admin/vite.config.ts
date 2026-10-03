@@ -20,7 +20,7 @@ const config = {
         alias: {
             '@flow/core': `${packages}/core/src/index.ts`,
             '@flow/editor': `${packages}/editor/src/index.ts`,
-            '@flow/i18n': `${packages}/i18n/src/index.ts`,
+            '@flow/i18n': `${packages}/translations/src/index.ts`,
         },
         dedupe: ['react', 'react-dom', '@emotion/react', '@mui/material', '@mui/system', '@mui/icons-material'],
     },

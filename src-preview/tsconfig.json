@@ -17,7 +17,7 @@
         "paths": {
             "@flow/core": ["../packages/core/src/index.ts"],
             "@flow/editor": ["../packages/editor/src/index.ts"],
-            "@flow/i18n": ["../packages/i18n/src/index.ts"]
+            "@flow/i18n": ["../packages/translations/src/index.ts"]
         }
     },
     "include": [
@@ -25,7 +25,7 @@
         "../src-admin/src",
         "../packages/core/src",
         "../packages/editor/src",
-        "../packages/i18n/src"
+        "../packages/translations/src"
     ],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
