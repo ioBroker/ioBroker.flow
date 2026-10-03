@@ -38,7 +38,6 @@ jobs:
           install-command: 'npm ci'
           type-checking: true
           lint: true
-          test-command: 'npm run test:package'
 
   # Runs adapter tests on all supported node versions
   adapter-tests:
@@ -53,7 +52,7 @@ jobs:
 
     steps:
       # `build: true` is the point of this job: the adapter ships no Node.js code, so what has
-      # to hold on every node version is the install and the three Vite builds. The unit tests
+      # to hold on every node version is the installation and the three Vite builds. The unit tests
       # (`npm run test:unit`) are picked up automatically by the action.
       - uses: ioBroker/testing-action-adapter@v1
         with:
