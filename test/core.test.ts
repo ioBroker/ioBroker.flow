@@ -2518,20 +2518,21 @@ describe('rules, status texts and stale values', () => {
             ],
         };
         const raw = (values: Record<string, unknown>) => (oid: string) => values[oid];
-        const running = computeRuntime(config, createValueGetter({ e: 1 }), LIGHT_THEME, { raw: raw({ e: true }) });
+        const theme = { ...LIGHT_THEME, locale: 'en-US' };
+        const running = computeRuntime(config, createValueGetter({ e: 1 }), theme, { raw: raw({ e: true }) });
         assert.equal(running.edges[0].valueText.text, 'läuft');
         // The number keeps its work: the line flows, the way it was drawn
         assert.equal(running.edges[0].active, true);
         assert.equal(running.edges[0].direction, 1);
         assert.ok(running.edges[0].dotDuration > 0);
 
-        const off = computeRuntime(config, createValueGetter({ e: 0 }), LIGHT_THEME, { raw: raw({ e: false }) });
+        const off = computeRuntime(config, createValueGetter({ e: 0 }), theme, { raw: raw({ e: false }) });
         assert.equal(off.edges[0].valueText.text, 'aus');
         assert.equal(off.edges[0].active, false);
 
         // A value the map does not name is the amount again, with its unit
-        const other = computeRuntime(config, createValueGetter({ e: 7 }), LIGHT_THEME, { raw: raw({ e: 7 }) });
-        assert.equal(other.edges[0].valueText.text.replace(/\u00a0/g, ' '), '7,00 l/min');
+        const other = computeRuntime(config, createValueGetter({ e: 7 }), theme, { raw: raw({ e: 7 }) });
+        assert.equal(other.edges[0].valueText.text.replace(/\u00a0/g, ' '), '7.00 l/min');
     });
 
     it('dims a value that was not updated for too long', () => {
@@ -2630,15 +2631,20 @@ describe('key figures and energy of today', () => {
             edges: [],
         };
         const words = (values: Record<string, unknown>): string[] =>
-            computeRuntime(config, createValueGetter(values as Record<string, number>), LIGHT_THEME, {
-                raw: oid => values[oid],
-            }).nodes[0].badges.map(badge => badge.text.replace(/\u00a0/g, ' '));
+            computeRuntime(
+                config,
+                createValueGetter(values as Record<string, number>),
+                { ...LIGHT_THEME, locale: 'en-US' },
+                {
+                    raw: oid => values[oid],
+                },
+            ).nodes[0].badges.map(badge => badge.text.replace(/\u00a0/g, ' '));
 
         // A boolean reaches the widget as true or false, a switch of an older adapter as 1 or 0
-        assert.deepEqual(words({ tap: 8, valve: true, pressure: 3.2 }), ['offen', '3,20 bar']);
-        assert.deepEqual(words({ tap: 8, valve: 0, pressure: 3.2 }), ['zu', '3,20 bar']);
+        assert.deepEqual(words({ tap: 8, valve: true, pressure: 3.2 }), ['offen', '3.20 bar']);
+        assert.deepEqual(words({ tap: 8, valve: 0, pressure: 3.2 }), ['zu', '3.20 bar']);
         // A value the map does not name stays a number: half a map must not swallow anything
-        assert.deepEqual(words({ tap: 8, valve: 7, pressure: 3.2 }), ['7,00 l/min', '3,20 bar']);
+        assert.deepEqual(words({ tap: 8, valve: 7, pressure: 3.2 }), ['7.00 l/min', '3.20 bar']);
 
         // The two words are written and taken back one at a time, and the last one removed leaves nothing
         const map = switchTextMap('offen', 'zu');
