@@ -310,7 +310,7 @@ translated yet" where a copy of the English would claim otherwise. Contributions
 
 MIT License
 
-Copyright (c) 2026 bluefox <dogafox@gmail.com>
+Copyright (c) 2026 Denis Haev <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
