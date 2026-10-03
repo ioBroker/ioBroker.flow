@@ -29,8 +29,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # This is one npm workspace, so a single `npm ci` at the root installs all four
-      # bundles and hoists the shared copies of react, MUI and @iobroker/gui-components
+      # Every dependency is declared in the root package.json, so one `npm ci` at the root
+      # installs everything into a single node_modules -- one copy of react, MUI and
+      # @iobroker/gui-components for the bundles and the shared packages alike
       - uses: ioBroker/testing-action-check@v2
         with:
           node-version: '24.x'

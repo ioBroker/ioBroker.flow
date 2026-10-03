@@ -30,7 +30,7 @@ built or published separately — the bundles compile their TypeScript directly.
 ## Commands
 
 ```bash
-npm install          # AT THE ROOT. This is a workspace; see "Why a workspace" below.
+npm install          # AT THE ROOT, and only there; see "Why every dependency is declared at the root".
 npm run build        # previews + both bundles
 npm run build-vis    # only src-widgets -> widgets/flow/
 npm run build-dm     # only src-dm-widgets -> admin/dm-widgets/
@@ -346,15 +346,28 @@ say "no fill" against a declaring object, so the field keeps a typed 0. The host
 - A derived node shows the base unit its connections agree on (`commonEdgeUnit`); if they disagree,
   the diagram's default.
 
-## Why a workspace
+## Why every dependency is declared at the root
 
-## Why a workspace
+`npm install` must run at the root, and **only** there. Every dependency of every bundle is declared in
+the root `package.json`; the four `src-*/package.json` carry nothing but a name, a version and their
+scripts. There is therefore exactly one `node_modules`, which is the point: `packages/core` and
+`packages/editor` are compiled *into* both bundles, so they must resolve the same copy of React, MUI and
+`@iobroker/gui-components` as the bundle around them. With a second copy, TypeScript sees two
+`@types/react` and rejects every `ReactNode`, and at runtime a second React means a second context
+registry. If you ever see `Two different types with this name exist, but they are unrelated`, a package
+got duplicated -- look for a stray `src-*/node_modules`.
 
-`npm install` must run at the root. `packages/core` and `packages/editor` are compiled *into* both
-bundles, so they must resolve the same copy of React, MUI and `@iobroker/gui-components` as the bundle
-around them. Without workspace hoisting, TypeScript sees two `@types/react` and rejects every
-`ReactNode`, and at runtime a second React means a second context registry. If you ever see
-`Two different types with this name exist, but they are unrelated`, a package got duplicated.
+This used to be an npm workspace, which hoisted the shared copies instead. It is not any more, for one
+reason: `@alcalzone/release-script` refuses to run as soon as the root `package.json` declares a
+non-empty `workspaces` array -- it demands lerna or yarn and never looks at whether anything is
+publishable (everything here is `private: true`, so only `iobroker.flow` ever reaches npm). Declaring
+the dependencies at the root gives the same single copy without that.
+
+One consequence worth knowing: **TypeScript is capped below 6.1** by
+`@typescript-eslint/eslint-plugin` (`typescript@">=4.8.4 <6.1.0"`, via `@iobroker/eslint-config`). While
+the bundles had their own `node_modules`, they could sit on 7.x and the root on 6.x; with one tree that
+is one version for everything. The bundles type check on 6.0.3, so nothing was lost -- but a bump of
+the one has to wait for the other.
 
 ## Contracts with the two hosts
 

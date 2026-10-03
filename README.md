@@ -246,7 +246,8 @@ What is missing so far: reading history, so there is no min/max over the last da
 
 ## Development
 
-This is one npm workspace with three bundles, a development preview and three shared source packages.
+One package with three bundles, a development preview and three shared source packages. Everything is
+declared in the root `package.json`; the bundles have no dependencies of their own.
 
 ```
 packages/core/          model, value resolution, geometry, SVG renderer — no MUI, no socket
@@ -272,9 +273,10 @@ npm run lint
 npm test             # unit tests of the core plus the ioBroker package checks
 ```
 
-`npm install` must be run **at the root**: `packages/core` and `packages/editor` are compiled into both
-bundles and have to see the same copy of React and MUI as the bundle around them, which is what the
-workspace hoisting arranges.
+`npm install` must be run **at the root**, and only there: every dependency is declared in the root
+`package.json`, so there is one `node_modules` for everything. That is deliberate -- `packages/core` and
+`packages/editor` are compiled into both bundles and have to see the same copy of React and MUI as the
+bundle around them.
 
 ### Working on the GUI
 

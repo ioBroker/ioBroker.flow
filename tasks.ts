@@ -12,10 +12,10 @@
  * Executed with `tsx` (see the scripts in package.json), so this file is type checked by the root
  * tsconfig like the rest of the sources.
  *
- * There is no npm-install step per bundle: this is an npm workspace, so a single `npm install` at the
- * root installs both and hoists the shared copies of react, MUI and `@iobroker/gui-components` -- which
- * it *must*, because `packages/core` and `packages/editor` are compiled into both bundles and would
- * otherwise see a different React than the bundle around them.
+ * There is no npm-install step per bundle: every dependency is declared in the root `package.json`, so
+ * a single `npm install` at the root puts one copy of react, MUI and `@iobroker/gui-components` in one
+ * `node_modules` -- which it *must*, because `packages/core` and `packages/editor` are compiled into
+ * both bundles and would otherwise see a different React than the bundle around them.
  */
 import { buildReact, copyFiles, deleteFoldersRecursive, patchHtmlFile } from '@iobroker/build-tools';
 import { copyFileSync, existsSync, rmSync } from 'node:fs';
