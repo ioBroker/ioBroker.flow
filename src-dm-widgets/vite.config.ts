@@ -42,9 +42,16 @@ const pack = JSON.parse(readFileSync(new URL('./package.json', import.meta.url),
  * So only what genuinely breaks as a second copy stays shared:
  *
  * - `react`, `react-dom` and the JSX runtime -- two Reacts mean two context registries.
- * - `@mui/material` and `@emotion/react` -- they carry the ThemeContext the host's theme arrives in.
+ * - `@mui/material` -- it carries the ThemeContext the host's theme arrives in.
  * - `@iobroker/dm-widgets` -- the bridge to the host's real `WidgetGeneric`; a second copy would be
  *   the compile-time stub, which renders nothing.
+ *
+ * `@emotion/react` is deliberately **not** shared. The device manager shares nothing itself, so with
+ * `loaded-first` the copy we got was whichever another widget plugin registered first -- and that
+ * copy imports *its* plugin's React. Emotion's `withEmotionCache` then called `useContext` on a React
+ * that was not rendering, and the settings dialog died with `Cannot read properties of null (reading
+ * 'useContext')` as soon as e.g. the NMEA or WitMotion widgets were on the page. Bundled, emotion
+ * imports `react` like our own code does, through `hostShim.ts`, and gets the host's.
  *
  * The rest is bundled and tree-shaken. Icons are stateless SVG components, and `I18n` from
  * `@iobroker/gui-components` keeps its dictionary and language on `window`, so both copies read the
@@ -57,7 +64,6 @@ const SINGLETONS = [
     'react-dom',
     'react/jsx-runtime',
     'react/jsx-dev-runtime',
-    '@emotion/react',
     '@mui/material',
     '@iobroker/dm-widgets',
 ];

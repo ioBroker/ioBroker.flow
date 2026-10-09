@@ -425,6 +425,11 @@ up only as a widget that does not appear.
   `@mui/material` through a shim that prefers the host's instance. The federated module stays the
   fallback, because the same bundle's `./Config` is also loaded by an adapter's configuration page,
   where that global does not exist but the admin *does* register its React as a singleton.
+- **Never share a package that imports React but cannot be shimmed.** Because the host shares
+  nothing, a shared module under `loaded-first` is whichever *other widget plugin* registered it first,
+  bound to that plugin's React. `@emotion/react` was shared once: with the NMEA or WitMotion widgets on
+  the page, the settings dialog died with `reading 'useContext'` inside *their* emotion chunks. It is
+  bundled now, and reaches React through the shim like our own code.
 - `getConfigSchema()` is typed against `@iobroker/dm-utils`, not `@iobroker/json-config` — the base
   class in `@iobroker/dm-widgets` uses that copy of the schema types, and the two are unrelated
   declarations to TypeScript.
