@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "flow",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "news": {
+      "0.1.0": {
+        "en": "Corrections devices widget",
+        "de": "Widget für Korrekturgeräte",
+        "ru": "Виджет исправительных устройств",
+        "pt": "Widget de correções",
+        "nl": "Widget voor correctieapparatuur",
+        "fr": "Widget Corrections Devices",
+        "it": "Widget Correzioni",
+        "es": "Widget de dispositivos correctores",
+        "pl": "Widżet urządzeń korekty",
+        "uk": "Віджет виправлення пристроїв",
+        "zh-cn": "校正设备小工具"
+      },
       "0.0.2": {
         "en": "Corrections for publication",
         "de": "Korrekturen zur Publikation",

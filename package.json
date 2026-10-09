@@ -1,6 +1,6 @@
 {
   "name": "iobroker.flow",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Configurable flow diagram for energy, water, gas and heat, for ioBroker.vis-2 and ioBroker.devices",
   "author": "bluefox <dogafox@gmail.com>",
   "contributors": [
