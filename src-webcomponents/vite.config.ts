@@ -1,6 +1,6 @@
 // @ts-expect-error no types
 import react from '@vitejs/plugin-react';
-import { checkManifest, REACT_19_URL, REACT_SPECIFIERS, type WebComponentText } from '@iobroker/web-components';
+import { checkManifest, getReactImportPath, REACT_SPECIFIERS, type WebComponentText } from '@iobroker/web-components';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type { Plugin } from 'vite';
@@ -12,10 +12,14 @@ import { buildManifest, MANIFEST_FILE, MANIFEST_WORDS, TAG } from './manifest';
  * `flow-diagram.json` next to it, which every host reads from `/adapter/flow/` -- vis-2, the device
  * manager, Aura, admin. No module federation: the host shares nothing but the socket.
  *
- * React is not bundled. The four React imports point at `/lib/esm/react-19.js`, which web and admin
+ * React is not bundled. The four React imports point at `lib/esm/react-19.js`, which web and admin
  * serve (`@iobroker/web-components`), so all React components of a page run on one React -- and this
- * module stays small.
+ * module stays small. The path is relative to the module (`../../../lib/esm/react-19.js`), so the
+ * browser finds React behind a reverse proxy with a path prefix too.
  */
+
+/** Where `tasks.ts` puts the module in the admin folder (`WC_FILE`); the React import is relative to it */
+const MODULE_PATH = 'webcomponents/flow-diagram.js';
 
 /** The shared sources live outside this package and are compiled into the bundle, not linked */
 const packages = fileURLToPath(new URL('../packages', import.meta.url));
@@ -110,7 +114,9 @@ const config = {
         rollupOptions: {
             external: [...REACT_SPECIFIERS],
             output: {
-                paths: Object.fromEntries(REACT_SPECIFIERS.map(specifier => [specifier, REACT_19_URL])),
+                paths: Object.fromEntries(
+                    REACT_SPECIFIERS.map(specifier => [specifier, getReactImportPath(MODULE_PATH)]),
+                ),
                 // One file: a host imports exactly one URL
                 codeSplitting: false,
                 // Library mode keeps whitespace and comments for the bundler of a consumer; this
