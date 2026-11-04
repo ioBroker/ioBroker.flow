@@ -21,6 +21,7 @@ export default [
             'packages/*/src/**/*.{ts,tsx}',
             'src-widgets/src/**/*.{ts,tsx}',
             'src-dm-widgets/src/**/*.{ts,tsx}',
+            'src-webcomponents/src/**/*.{ts,tsx}',
             'src-admin/src/**/*.{ts,tsx}',
             'src-preview/src/**/*.{ts,tsx}',
         ],

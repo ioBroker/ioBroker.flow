@@ -361,5 +361,10 @@
     "wizard_scanning": "Buscando estados que informen sobre energía…",
     "wizard_sign_hint": "La lectura de la red eléctrica y la batería es la siguiente: positivo = consumo / descarga. Si el medidor cuenta en sentido contrario, utilice la opción \"Invertir signo\" en la conexión posterior.",
     "wizard_soc": "Estado de carga de la batería",
-    "wizard_title": "Crea un diagrama a partir de tus dispositivos."
+    "wizard_title": "Crea un diagrama a partir de tus dispositivos.",
+    "wc_choose_diagram": "Elige un diagrama en los ajustes.",
+    "wc_diagram_help": "Los diagramas se dibujan y se guardan en la pestaña «Flujo» del admin.",
+    "wc_help": "Diagrama de flujo animado para energía, agua, gas o calor. Muestra un diagrama dibujado en la pestaña «Flujo» del admin.",
+    "wc_hide_labels": "Sin etiquetas",
+    "wc_full_view": "Abrir en grande al hacer clic"
 }

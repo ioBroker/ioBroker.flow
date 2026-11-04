@@ -361,5 +361,10 @@
     "wizard_scanning": "Op zoek naar staten die gegevens over stroomverbruik rapporteren…",
     "wizard_sign_hint": "Netspanning en batterijspanning worden als volgt afgelezen: positief = afgenomen / ontladen. Als een meter de andere kant op telt, gebruik dan de \"omkeerteken\"-functie bij de aansluiting.",
     "wizard_soc": "Laadstatus van de batterij",
-    "wizard_title": "Maak een diagram met behulp van je apparaten."
+    "wizard_title": "Maak een diagram met behulp van je apparaten.",
+    "wc_choose_diagram": "Kies een diagram in de instellingen.",
+    "wc_diagram_help": "Diagrammen worden getekend en opgeslagen in het tabblad 'Stroom' van admin.",
+    "wc_help": "Geanimeerd stroomdiagram voor energie, water, gas of warmte. Toont een diagram dat in het tabblad 'Stroom' van admin is getekend.",
+    "wc_hide_labels": "Zonder labels",
+    "wc_full_view": "Bij klikken groot openen"
 }

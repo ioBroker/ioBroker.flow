@@ -361,5 +361,10 @@
     "wizard_scanning": "Alla ricerca degli stati che riportano la potenza…",
     "wizard_sign_hint": "La rete elettrica e la batteria vengono lette come segue: positivo = prelevato / scaricato. Se un contatore conta in modo diverso, utilizzare la funzione \"Inverti segno\" sul collegamento successivo.",
     "wizard_soc": "Stato di carica della batteria",
-    "wizard_title": "Crea un diagramma dai tuoi dispositivi"
+    "wizard_title": "Crea un diagramma dai tuoi dispositivi",
+    "wc_choose_diagram": "Scegli un diagramma nelle impostazioni.",
+    "wc_diagram_help": "I diagrammi si disegnano e si salvano nella scheda «Flusso» dell'admin.",
+    "wc_help": "Diagramma di flusso animato per energia, acqua, gas o calore. Mostra un diagramma disegnato nella scheda «Flusso» dell'admin.",
+    "wc_hide_labels": "Senza etichette",
+    "wc_full_view": "Aprire in grande con un clic"
 }

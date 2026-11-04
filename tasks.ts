@@ -8,6 +8,8 @@
  * - `src-dm-widgets/` -> `admin/dm-widgets/`, declared as `common.deviceWidgets.url`. This is what
  *   `pluginLoader.ts` of ioBroker.devices loads, and what `@iobroker/json-config` fetches the
  *   designer from.
+ * - `src-webcomponents/` -> `admin/webcomponents/flow-diagram.js`, declared as `common.webComponents`.
+ *   One ES module for every host of `@iobroker/web-components` (vis-2, devices, Aura, admin).
  *
  * Executed with `tsx` (see the scripts in package.json), so this file is type checked by the root
  * tsconfig like the rest of the sources.
@@ -23,12 +25,19 @@ import { copyFileSync, existsSync, rmSync } from 'node:fs';
 const VIS_SRC = 'src-widgets/';
 const DM_SRC = 'src-dm-widgets/';
 const ADMIN_SRC = 'src-admin/';
+const WC_SRC = 'src-webcomponents/';
 
 /** Where vis-2 expects the widget set; must match `common.visWidgets.*.url` */
 const VIS_DEST = 'widgets/flow/';
 
 /** Where ioBroker.devices expects the plugin; must match `common.deviceWidgets.url` */
 const DM_DEST = 'admin/dm-widgets/';
+
+/** Served as `/adapter/flow/webcomponents/`; must match `common.webComponents` */
+const WC_DEST = 'admin/webcomponents/';
+const WC_FILE = `${WC_DEST}flow-diagram.js`;
+/** The manifest the build writes next to the module; `common.webComponents` names this one */
+const WC_MANIFEST = `${WC_DEST}flow-diagram.json`;
 
 /**
  * The admin tab. Admin loads `adapter/flow/tab.html` for an `adminTab` without a `link`, and
@@ -58,6 +67,7 @@ function cleanAdmin(): void {
 function clean(): void {
     cleanBundle(VIS_SRC, VIS_DEST);
     cleanBundle(DM_SRC, DM_DEST);
+    cleanBundle(WC_SRC, WC_DEST);
     cleanAdmin();
     deleteFoldersRecursive(`${__dirname}/widgets`);
 }
@@ -109,6 +119,11 @@ function copyDm(): void {
     copyFiles(['admin/flow.svg'], DM_DEST);
 }
 
+/** The web component is one module and its manifest; its icon is `admin/flow.svg`, one folder up */
+function copyWc(): void {
+    copyFiles([`${WC_SRC}build/*.js`, `${WC_SRC}build/*.json`], WC_DEST);
+}
+
 /**
  * Put the tab where admin looks for it.
  *
@@ -150,6 +165,12 @@ async function main(): Promise<void> {
         copyDm();
         return;
     }
+    if (argv.includes('--wc')) {
+        cleanBundle(WC_SRC, WC_DEST);
+        await compile(WC_SRC);
+        copyWc();
+        return;
+    }
     if (argv.includes('--admin')) {
         cleanAdmin();
         await compile(ADMIN_SRC);
@@ -163,11 +184,13 @@ async function main(): Promise<void> {
     copyVis();
     await compile(DM_SRC);
     copyDm();
+    await compile(WC_SRC);
+    copyWc();
     await compile(ADMIN_SRC);
     await copyAdmin();
 
     // A missing bundle would only show up when somebody installs the adapter, so check it here
-    for (const file of [`${VIS_DEST}customWidgets.js`, `${DM_DEST}customDevices.js`, TAB_HTML]) {
+    for (const file of [`${VIS_DEST}customWidgets.js`, `${DM_DEST}customDevices.js`, WC_FILE, WC_MANIFEST, TAB_HTML]) {
         if (!existsSync(`${__dirname}/${file}`)) {
             fail('build', new Error(`${file} was not produced`));
         }
@@ -178,7 +201,7 @@ async function main(): Promise<void> {
         rmSync(`${__dirname}/${folder}`, { recursive: true, force: true });
     }
 
-    console.log(`Built ${VIS_DEST}, ${DM_DEST} and ${TAB_HTML}`);
+    console.log(`Built ${VIS_DEST}, ${DM_DEST}, ${WC_FILE}, ${WC_MANIFEST} and ${TAB_HTML}`);
 }
 
 main().catch((error: unknown) => fail('build', error));

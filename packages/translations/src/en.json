@@ -475,5 +475,10 @@
     "wizard_soc_gas": "Level of the tank",
     "wizard_soc_heat": "Charge of the buffer",
     "wizard_soc_water": "Level of the tank",
-    "wizard_title": "Build a diagram from your devices"
+    "wizard_title": "Build a diagram from your devices",
+    "wc_choose_diagram": "Choose a diagram in the settings.",
+    "wc_diagram_help": "Diagrams are drawn and saved in the Flow tab of admin.",
+    "wc_help": "Animated flow diagram for energy, water, gas or heat. Shows a diagram that is drawn in the Flow tab of admin.",
+    "wc_hide_labels": "Without labels",
+    "wc_full_view": "Open big on a click"
 }

@@ -361,5 +361,10 @@
     "wizard_scanning": "Szukam stanów, które raportują moc…",
     "wizard_sign_hint": "Sieć i akumulator odczytuje się następująco: dodatni = pobierany z niej / rozładowywany. Jeśli licznik wskazuje inaczej, należy później użyć opcji „Odwróć znak” na połączeniu.",
     "wizard_soc": "Stan naładowania akumulatora",
-    "wizard_title": "Zbuduj diagram ze swoich urządzeń"
+    "wizard_title": "Zbuduj diagram ze swoich urządzeń",
+    "wc_choose_diagram": "Wybierz diagram w ustawieniach.",
+    "wc_diagram_help": "Diagramy rysuje się i zapisuje w zakładce „Przepływ” w adminie.",
+    "wc_help": "Animowany diagram przepływu energii, wody, gazu lub ciepła. Pokazuje diagram narysowany w zakładce „Przepływ” w adminie.",
+    "wc_hide_labels": "Bez etykiet",
+    "wc_full_view": "Otwórz w powiększeniu po kliknięciu"
 }

@@ -5,8 +5,11 @@ tmp/
 build/
 widgets/
 admin/dm-widgets/
+admin/webcomponents/
 src-widgets/build/
 src-dm-widgets/build/
+src-webcomponents/build/
+src-webcomponents/*.tsbuildinfo
 *.log
 .DS_Store
 *.tgz

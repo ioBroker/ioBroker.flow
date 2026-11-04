@@ -361,5 +361,10 @@
     "wizard_scanning": "Recherche d'États qui communiquent leurs chiffres de consommation d'énergie…",
     "wizard_sign_hint": "Le signal du réseau et de la batterie se lit comme suit : positif = consommation / décharge. Si un compteur fonctionne dans l’autre sens, inversez le signe lors du branchement.",
     "wizard_soc": "État de charge de la batterie",
-    "wizard_title": "Créez un diagramme à partir de vos appareils"
+    "wizard_title": "Créez un diagramme à partir de vos appareils",
+    "wc_choose_diagram": "Choisissez un diagramme dans les paramètres.",
+    "wc_diagram_help": "Les diagrammes se dessinent et s'enregistrent dans l'onglet « Flux » de l'admin.",
+    "wc_help": "Diagramme de flux animé pour l'énergie, l'eau, le gaz ou la chaleur. Affiche un diagramme dessiné dans l'onglet « Flux » de l'admin.",
+    "wc_hide_labels": "Sans libellés",
+    "wc_full_view": "Ouvrir en grand au clic"
 }

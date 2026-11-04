@@ -11,6 +11,9 @@ Node.js runtime code**. It delivers one diagram in two places:
   federation, declared in `io-package.json` under `common.visWidgets.flowWidgets`;
 - a **ioBroker.devices plugin** (`src-dm-widgets/` → `admin/dm-widgets/`), loaded by the widget
   manager of ioBroker.devices, declared under `common.deviceWidgets`;
+- a **web component** `<iob-flow-diagram>` (`src-webcomponents/` → `admin/webcomponents/flow-diagram.js`
+  and its manifest `flow-diagram.json`), the manifest declared under `common.webComponents`, for every
+  host of `@iobroker/web-components`;
 - an **admin tab** (`src-admin/` → `admin/tab.html` + `admin/tab-assets/`), declared as
   `common.adminTab`, where stored diagrams are edited without opening vis.
 
@@ -433,6 +436,23 @@ up only as a widget that does not appear.
 - `getConfigSchema()` is typed against `@iobroker/dm-utils`, not `@iobroker/json-config` — the base
   class in `@iobroker/dm-widgets` uses that copy of the schema types, and the two are unrelated
   declarations to TypeScript.
+
+### Web components (`@iobroker/web-components`)
+
+- `src-webcomponents/` is a Vite **library** build: one ES module, no federation. The four React imports
+  are external and point at `REACT_19_URL` (`/lib/esm/react-19.js`, served by web and admin), so it
+  carries no React; `output.minify` is set because library mode keeps whitespace.
+- It only shows a **stored** diagram, kept up to date with `getObjectIds`; `getStateIds` reads the nodes
+  out of it, and the base class asks again whenever the object changes. No designer, no MUI: the detail
+  chart (`HistoryPanel.tsx`) and the big view are element dialogs of the host (`openDialog`), the click
+  action `view` is the event `iob-navigate`.
+- The manifest is `src-webcomponents/manifest.ts`, run by the build only: the plugin `manifestFile` in
+  `vite.config.ts` writes it as `flow-diagram.json` next to the module (checked with `checkManifest`), and
+  `common.webComponents` names that JSON. Hosts read it without loading the module and import the module
+  only to show the element. The module gets the tag as `__FLOW_TAG__`; it does not export the manifest.
+- The words are picked out of the dictionary at build time: the ones the element shows are `WORDS` in
+  `vite.config.ts` (injected as `__FLOW_WORDS__`), the ones of the manifest `MANIFEST_WORDS` in
+  `manifest.ts` (in every language, into the JSON). A new word has to be added to the right list.
 
 ### Any adapter's admin configuration
 

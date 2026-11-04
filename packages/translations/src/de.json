@@ -475,5 +475,10 @@
     "wizard_soc_gas": "Füllstand des Tanks",
     "wizard_soc_heat": "Ladezustand des Puffers",
     "wizard_soc_water": "Füllstand des Tanks",
-    "wizard_title": "Diagramm aus deinen Geräten erstellen"
+    "wizard_title": "Diagramm aus deinen Geräten erstellen",
+    "wc_choose_diagram": "Diagramm in den Einstellungen wählen.",
+    "wc_diagram_help": "Diagramme werden im Tab „Fluss“ des Admins gezeichnet und gespeichert.",
+    "wc_help": "Animiertes Fluss-Diagramm für Energie, Wasser, Gas oder Wärme. Zeigt ein Diagramm, das im Tab „Fluss“ des Admins gezeichnet wird.",
+    "wc_hide_labels": "Ohne Beschriftungen",
+    "wc_full_view": "Bei Klick groß öffnen"
 }

@@ -148,6 +148,9 @@
         }
       ]
     },
+    "webComponents": [
+      "webcomponents/flow-diagram.json"
+    ],
     "dependencies": [
       {
         "js-controller": ">=6.0.11"

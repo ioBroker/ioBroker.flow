@@ -361,5 +361,10 @@
     "wizard_scanning": "Procurando estados que divulgam dados sobre o consumo de energia…",
     "wizard_sign_hint": "A leitura da rede e da bateria é a seguinte: positivo = corrente consumida/descarregada. Se o multímetro indicar o contrário, inverta o sinal na conexão subsequente.",
     "wizard_soc": "Estado de carga da bateria",
-    "wizard_title": "Crie um diagrama a partir dos seus dispositivos."
+    "wizard_title": "Crie um diagrama a partir dos seus dispositivos.",
+    "wc_choose_diagram": "Escolha um diagrama nas definições.",
+    "wc_diagram_help": "Os diagramas são desenhados e guardados no separador «Fluxo» do admin.",
+    "wc_help": "Diagrama de fluxo animado para energia, água, gás ou calor. Mostra um diagrama desenhado no separador «Fluxo» do admin.",
+    "wc_hide_labels": "Sem legendas",
+    "wc_full_view": "Abrir em grande com um clique"
 }
