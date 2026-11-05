@@ -19,8 +19,8 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 
-import { NAVIGATE_EVENT, type WebComponentSocket } from '@iobroker/web-components';
-import { defineWebComponent, IobWebComponent } from '@iobroker/web-components/element';
+import { NAVIGATE_EVENT, type WebComponentSocket, type WebComponentTheme } from '@iobroker/web-components';
+import { defineWebComponent, getThemeCssVariables, IobWebComponent } from '@iobroker/web-components/element';
 import {
     cachedEnergyToday,
     cachedHistory,
@@ -111,7 +111,7 @@ class FlowDiagram extends IobWebComponent<FlowSettings> {
     /** The drawings of the open dialogs, run with every drawing of the element */
     readonly #dialogDrawings = new Set<() => void>();
 
-    #theme: { key: string; theme: FlowTheme } | null = null;
+    #theme: { source: WebComponentTheme; lang: string; theme: FlowTheme } | null = null;
 
     constructor() {
         super();
@@ -204,10 +204,22 @@ class FlowDiagram extends IobWebComponent<FlowSettings> {
         return (object && diagramFromNative(object.native)) || emptyConfig();
     }
 
+    /** The colors of the host for the diagram - the node accents stay those of flow, they carry a meaning */
     #flowTheme(): FlowTheme {
-        const key = `${this.theme}|${this.systemLang}`;
-        if (this.#theme?.key !== key) {
-            this.#theme = { key, theme: createTheme(this.theme, { locale: this.systemLang }) };
+        const host = this.theme;
+        // the base class keeps the object of the theme as long as its values stay the same
+        if (this.#theme?.source !== host || this.#theme.lang !== this.systemLang) {
+            this.#theme = {
+                source: host,
+                lang: this.systemLang,
+                theme: createTheme(host.type, {
+                    locale: this.systemLang,
+                    text: host.text,
+                    textSecondary: host.textSecondary,
+                    surface: host.paper,
+                    border: host.divider,
+                }),
+            };
         }
         return this.#theme.theme;
     }
@@ -422,6 +434,10 @@ class FlowDiagram extends IobWebComponent<FlowSettings> {
         content: () => React.ReactNode,
     ): Promise<void> {
         const element = document.createElement('div');
+        // the host moves the content into its dialog, out of this element: it brings the theme along
+        for (const [name, value] of Object.entries(getThemeCssVariables(this.theme))) {
+            element.style.setProperty(name, value);
+        }
         const shadow = element.attachShadow({ mode: 'open' });
         const style = document.createElement('style');
         style.textContent = css;
