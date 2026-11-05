@@ -30,7 +30,7 @@ export const HISTORY_CSS = `
 }
 .periods button[aria-pressed='true'] { background: var(--flow-accent); border-color: var(--flow-accent); color: #fff; }
 .message { padding: 48px 0; text-align: center; opacity: 0.7; }
-.error { padding: 24px 0; text-align: center; color: #d32f2f; }
+.error { padding: 24px 0; text-align: center; color: var(--iob-error, #d32f2f); }
 .stats { display: flex; gap: 24px; justify-content: center; margin-top: 8px; font-size: 14px; }
 `;
 
