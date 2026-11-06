@@ -263,8 +263,10 @@ class FlowDiagram extends IobWebComponent<FlowSettings> {
     #renderBox(config: FlowConfig, theme: FlowTheme): React.JSX.Element {
         const { diagram, title, hideLabels, fullView } = this.settings;
         const lang = this.systemLang;
-        // read, but not there yet: draw nothing rather than the hint for a moment
-        const loading = !!diagram && !!this.socket && this.objects[diagram] === undefined;
+        // read, but not there yet: draw nothing rather than the hint for a moment. Only an ID of a stored
+        // diagram is read at all (getObjectIds) - anything else, e.g. the name `12V` instead of
+        // `flow.0.diagrams.12v`, never arrives and gets the hint at once instead of an empty box forever
+        const loading = !!diagram && isDiagramId(diagram) && !!this.socket && this.objects[diagram] === undefined;
         const zoom = !!fullView && !!config.nodes.length;
 
         let content: React.JSX.Element | null = null;
