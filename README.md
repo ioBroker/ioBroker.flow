@@ -318,7 +318,7 @@ translated yet" where a copy of the English would claim otherwise. Contributions
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.2.0 (2026-11-06)
 * (@GermanBluefox) Added the web component `<iob-flow-diagram>` (`common.webComponents`)
 * (@GermanBluefox) The web component takes the colors of its host for text, nodes and lines, like the vis-2 widget (`@iobroker/web-components` 0.5.0)
 * (@GermanBluefox) The web component shows its hint "choose a diagram" when the setting names no stored diagram (e.g. `12V` instead of `flow.0.diagrams.12v`), instead of staying empty

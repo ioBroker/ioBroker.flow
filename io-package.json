@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "flow",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "Added the web component `<iob-flow-diagram>` (`common.webComponents`)\nThe web component takes the colors of its host for text, nodes and lines, like the vis-2 widget (`@iobroker/web-components` 0.5.0)\nThe web component shows its hint \"choose a diagram\" when the setting names no stored diagram (e.g. `12V` instead of `flow.0.diagrams.12v`), instead of staying empty",
+        "de": "Webkomponente hinzugefügt <iob-flow-diagram>(`common.WebComponents`)\nDie Webkomponente nimmt die Farben ihres Hosts für Text, Knoten und Linien an, wie das Vis-2-Widget (`@iobroker /web-components` 0.5.0)\nDie Webkomponente zeigt den Hinweis „Diagramm wählen“, wenn sie kein gespeichertes Diagramm benennt (z. B. `12V` statt `flow.0.diagrams.12v`), statt leer zu bleiben",
+        "ru": "Добавлен веб-компонент `` <iob-flow-diagram>(`Common.webcomponents`)\nВеб-компонент принимает цвета текста, узлов и линий, как и виджет vis-2 (`@iobroker /web-components` 0.5.0)\nВеб-компонент показывает подсказку «выберите диаграмму», когда параметр не указывает ни одну сохраненную диаграмму (например, `12V` вместо `flow.0.diagrams.12v`), вместо того чтобы оставаться пустым",
+        "pt": "Adicionado o componente web `<iob-flow-diagram>` (`common.webComponents`)\nO componente web usa as cores do host para texto, nós e linhas, como o widget vis-2 (`@iobroker /web-components` 0.5.0)\nO componente web mostra a dica “escolha um diagrama” quando a configuração não contém nenhum diagrama (ex: `12V` em vez de `flow.0.diagrams.12v`).",
+        "nl": "De webcomponent `` <iob-flow-diagram>(`Common.WebComponents`) toegevoegd\nDe webcomponent gebruikt de kleuren van de host voor tekst, knooppunten en lijnen, zoals de vis-2-widget (`@iobroker /web-components` 0.5.0)\nDe webcomponent geeft de hint „kies een diagram” weer wanneer de instelling geen opgeslagen diagram noemt (bijvoorbeeld `12V` in plaats van `flow.0.diagrams.12v`), in plaats van leeg te blijven",
+        "fr": "Ajout du composant Web `` <iob-flow-diagram>(`common.WebComponents`)\nLe composant Web prend les couleurs de son hôte pour le texte, les nœuds et les lignes, comme le widget vis-2 (`@iobroker /web-components` 0.5.0)\nLe composant Web indique « Choisissez un diagramme » lorsque le paramètre ne nomme aucun diagramme enregistré (par exemple « 12V » au lieu de « flow.0.diagrams.12v ») au lieu de rester vide",
+        "it": "Aggiunto il componente web <iob-flow-diagram>(`common.WebComponents`)\nIl componente web usa i colori del suo host per testo, nodi e linee, come il widget vis-2 (`@iobroker /web-components` 0.5.0)\nIl componente web indica «scegli un diagramma» quando l'impostazione non nomina un diagramma salvato (ad es. `12V` anziché `flow.0.diagrams.12v`)",
+        "es": "Añadió el componente web `<iob-flow-diagram>(`Common.WebComponents`)\nEl componente web toma los colores de su host para texto, nodos y líneas, como el widget vis-2 (`@iobroker /web-components` 0.5.0)\nEl componente web muestra su sugerencia «elija un diagrama» cuando la configuración no nombra ningún diagrama almacenado (por ejemplo, `12V` en lugar de `flow.0.diagrams.12v`), en lugar de permanecer vacío",
+        "pl": "Dodano komponent sieciowy `<iob-flow-diagram>` (`common.webcomponents`)\nKomponent WWW przyjmuje kolory swojego hosta dla tekstu, węzłów i linii, jak widżet vis-2 (`@iobroker /web-components` 0.5.0)\nKomponent WWW pokazuje swoją wskazówkę „wybierz diagram”, gdy ustawienie nie nazywa żadnego zapisanego diagramu (np. `12V` zamiast `flow.0.diagrams.12v`), zamiast pozostać pustym",
+        "uk": "Додано веб-компонент `<iob-flow-diagram>` (`Common.WebComponents`)\nВеб-компонент приймає кольори свого хоста для тексту, вузлів і рядків, як віджет vis-2 (`@iobroker /web-components` 0.5.0)\nВеб-компонент показує свою підказку «вибрати діаграму», коли налаштування не називає збережену діаграму (наприклад, `12V` замість `flow.0.diagrams.12v`), замість того, щоб залишатися порожніми",
+        "zh-cn": "添加了 Web 组件 `<iob-flow-diagram>(`common.webComponents`)\nWeb 组件采用其主机的颜色来表示文本、节点和线条，例如 vis-2 控件 (`@iobroker /web-components` 0.5.0)\n当设置未命名存储的图表（例如 “12V” 而不是 flow.0.diagrams.12v）时，Web 组件会显示 “选择图表” 的提示，而不是保持空白"
+      },
       "0.1.0": {
         "en": "Corrections devices widget",
         "de": "Widget für Korrekturgeräte",
