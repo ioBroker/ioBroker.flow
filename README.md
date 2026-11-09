@@ -318,7 +318,7 @@ translated yet" where a copy of the English would claim otherwise. Contributions
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.2.1 (2026-11-09)
 * (@GermanBluefox) A line that leaves a node through its label no longer makes the label hard to read
 
 ### 0.2.0 (2026-11-06)

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "flow",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "news": {
+      "0.2.1": {
+        "en": "A line that leaves a node through its label no longer makes the label hard to read",
+        "de": "Eine Zeile mit einem Knoten macht das Etikett nicht mehr schwer lesbar",
+        "ru": "Линия, покидающая узел через метку, больше не затрудняет ее чтение.",
+        "pt": "Uma linha que sai de um nó pelo rótulo não dificulta mais a leitura do rótulo",
+        "nl": "Een lijn die een knooppunt via het label verlaat, maakt het label niet langer moeilijk leesbaar",
+        "fr": "Une ligne qui passe d'un nœud à son étiquette ne rend plus l'étiquette difficile à lire",
+        "it": "Una riga che lascia un nodo nell'etichetta non la rende più difficile da leggere",
+        "es": "Una línea que sale de un nodo a través de su etiqueta ya no dificulta la lectura",
+        "pl": "Linia, która opuszcza węzeł przez etykietę, nie sprawia, że etykieta jest trudna do odczytania",
+        "uk": "Рядок, який залишає вузол через мітку, більше не ускладнює читання мітки",
+        "zh-cn": "通过其标签离开节点的线条不再使标签难以读取"
+      },
       "0.2.0": {
         "en": "Added the web component `<iob-flow-diagram>` (`common.webComponents`)\nThe web component takes the colors of its host for text, nodes and lines, like the vis-2 widget (`@iobroker/web-components` 0.5.0)\nThe web component shows its hint \"choose a diagram\" when the setting names no stored diagram (e.g. `12V` instead of `flow.0.diagrams.12v`), instead of staying empty",
         "de": "Webkomponente hinzugefügt <iob-flow-diagram>(`common.WebComponents`)\nDie Webkomponente nimmt die Farben ihres Hosts für Text, Knoten und Linien an, wie das Vis-2-Widget (`@iobroker /web-components` 0.5.0)\nDie Webkomponente zeigt den Hinweis „Diagramm wählen“, wenn sie kein gespeichertes Diagramm benennt (z. B. `12V` statt `flow.0.diagrams.12v`), statt leer zu bleiben",
