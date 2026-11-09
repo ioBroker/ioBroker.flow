@@ -859,6 +859,11 @@ function NodeLayer({
                                 dominantBaseline="middle"
                                 fontSize={node.labelFontSize}
                                 fill={theme.textSecondary}
+                                // a line can leave the node right through its label
+                                stroke={look.panel ? theme.background : theme.mode === 'dark' ? '#000' : '#fff'}
+                                strokeWidth={node.labelFontSize * 0.4}
+                                strokeOpacity={look.panel ? 0.9 : 0.75}
+                                paintOrder="stroke"
                                 style={{ userSelect: 'none' }}
                             >
                                 {node.node.label}
