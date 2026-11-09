@@ -318,6 +318,9 @@ translated yet" where a copy of the English would claim otherwise. Contributions
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (@GermanBluefox) A line that leaves a node through its label no longer makes the label hard to read
+
 ### 0.2.0 (2026-11-06)
 * (@GermanBluefox) Added the web component `<iob-flow-diagram>` (`common.webComponents`)
 * (@GermanBluefox) The web component takes the colors of its host for text, nodes and lines, like the vis-2 widget (`@iobroker/web-components` 0.5.0)
