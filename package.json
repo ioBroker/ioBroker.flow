@@ -32,7 +32,7 @@
     "@iobroker/dm-widgets": "^2.0.1",
     "@iobroker/eslint-config": "^2.3.4",
     "@iobroker/gui-components": "^10.3.15",
-    "@iobroker/json-config": "^10.1.0",
+    "@iobroker/json-config": "^10.1.12",
     "@iobroker/testing": "^6.3.1",
     "@iobroker/types": "^7.2.5",
     "@iobroker/types-vis-2": "~2.20.1",
