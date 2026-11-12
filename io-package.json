@@ -175,7 +175,28 @@
       ]
     },
     "webComponents": [
-      "webcomponents/flow-diagram.json"
+      {
+        "manifest": "webcomponents/flow-diagram.json",
+        "tag": "iob-flow-diagram",
+        "name": {
+          "en": "Flow diagram",
+          "de": "Fluss-Diagramm",
+          "ru": "Диаграмма потока энергии",
+          "pt": "Diagrama de fluxo de energia",
+          "nl": "Energiestroomdiagram",
+          "fr": "Diagramme de flux d'énergie",
+          "it": "Diagramma del flusso di energia",
+          "es": "Diagrama de flujo de energía",
+          "pl": "Schemat przepływu energii",
+          "uk": "Діаграма потоку енергії",
+          "zh-cn": "能量流图"
+        },
+        "icon": "../flow.svg",
+        "size": {
+          "width": 480,
+          "height": 340
+        }
+      }
     ],
     "dependencies": [
       {

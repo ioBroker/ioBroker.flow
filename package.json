@@ -37,7 +37,7 @@
     "@iobroker/types": "^7.2.5",
     "@iobroker/types-vis-2": "~2.20.6",
     "@iobroker/vis-2-widgets-react-dev": "^4.0.4",
-    "@iobroker/web-components": "^0.5.0",
+    "@iobroker/web-components": "^0.8.0",
     "@module-federation/vite": "^1.23.9",
     "@mui/icons-material": "^9.5.0",
     "@mui/material": "^9.5.0",
@@ -60,7 +60,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsx tasks.ts",
+    "build": "tsx tasks.ts && iob-web-components sync-io-package",
     "build-vis": "tsx tasks.ts --vis",
     "build-dm": "tsx tasks.ts --dm",
     "build-wc": "tsx tasks.ts --wc",
